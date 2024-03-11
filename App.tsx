@@ -4,6 +4,8 @@ import Navigators from "./src/components/navigators";
 import { persistor, store } from "./src/store";
 
 export default function App() {
+  // AsyncStorage.clear();
+
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>

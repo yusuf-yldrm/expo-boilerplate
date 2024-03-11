@@ -3,15 +3,19 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const settingsSlice = createSlice({
   name: "settings",
   initialState: {
-    test: "test",
+    is_first_open: true,
+    is_premium: false,
   },
   reducers: {
-    setTest(state, action: PayloadAction<string>) {
-      state.test = action.payload;
+    setIsFirstOpen(state, action: PayloadAction<boolean>) {
+      state.is_first_open = action.payload;
+    },
+    setIsPremium(state, action: PayloadAction<boolean>) {
+      state.is_premium = action.payload;
     },
   },
 });
 
-export const { setTest } = settingsSlice.actions;
+export const { setIsFirstOpen } = settingsSlice.actions;
 
 export default settingsSlice.reducer;

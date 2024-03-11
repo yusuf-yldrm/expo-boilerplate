@@ -1,6 +1,7 @@
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Image, StyleSheet, View } from "react-native";
+import { useAppSelector } from "../../store/hooks";
 import AppTheme from "../../utils/theme";
 
 type Props = NativeStackScreenProps<
@@ -10,7 +11,9 @@ type Props = NativeStackScreenProps<
 >;
 
 const Splash: React.FC<Props> = ({ navigation }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const isAppFirstOpen = useAppSelector(
+    (state) => state.settings.is_first_open
+  );
 
   useEffect(() => {
     initialize();
@@ -18,8 +21,11 @@ const Splash: React.FC<Props> = ({ navigation }) => {
 
   const initialize = () => {
     setTimeout(() => {
-      setIsLoading(false);
-      navigation.replace("Discover");
+      if (isAppFirstOpen) {
+        navigation.replace("Onboarding");
+      } else {
+        navigation.replace("Discover");
+      }
     }, 2000);
   };
 
