@@ -5,8 +5,12 @@ const Tab = createBottomTabNavigator<TabStackParamList>();
 
 export function TabNavigator() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={Screens.Discover} />
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Tab.Screen name="Home" component={Screens.Home} />
     </Tab.Navigator>
   );
 }

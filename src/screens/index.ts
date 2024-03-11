@@ -1,9 +1,9 @@
-import Discover from "./discover";
+import Home from "./home";
 import Splash from "./splash";
 
 const Screens = {
   Splash,
-  Discover,
+  Home,
 };
 
 export default Screens;
