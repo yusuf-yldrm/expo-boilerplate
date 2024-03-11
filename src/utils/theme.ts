@@ -1,3 +1,5 @@
+import { Dimensions } from "react-native";
+
 const AppTheme = {
   colors: {
     primary: "#FFD700",
@@ -11,4 +13,8 @@ const AppTheme = {
   },
 };
 
+const ScreenWidth = Dimensions.get("window").width;
+const ScreenHeight = Dimensions.get("window").height;
+const ScreenRatio = ScreenWidth / ScreenHeight;
+export { ScreenHeight, ScreenRatio, ScreenWidth };
 export default AppTheme;
