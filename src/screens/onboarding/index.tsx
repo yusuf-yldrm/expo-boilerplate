@@ -1,20 +1,31 @@
-import { useRef, useState } from "react";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import React, { useRef, useState } from "react";
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import BasicButton from "../../components/button/button";
 import Gradient from "../../components/gradient";
 import { onboardingData } from "../../constants/onboarding";
+import { useAppDispatch } from "../../store/hooks";
+import { setIsFirstOpen } from "../../store/store/settings";
 import { ScreenHeight, ScreenWidth } from "../../utils/theme";
 
-const Onboarding = ({ navigation }) => {
+type Props = NativeStackScreenProps<
+  RootStackParamList,
+  "Onboarding",
+  "NativeStack"
+>;
+
+const Onboarding: React.FC<Props> = ({ navigation }) => {
   const flatListRef = useRef<FlatList>(null);
   const [currentStep, setCurrentStep] = useState(0);
+  const dispatch = useAppDispatch();
 
   const handleNext = () => {
     if (currentStep < onboardingData.length - 1) {
       setCurrentStep((prev) => prev + 1);
       flatListRef.current?.scrollToIndex({ index: currentStep + 1 });
     } else {
-      // navigation.navigate("Home");
+      navigation.navigate("Discover");
+      dispatch(setIsFirstOpen(false));
     }
   };
 

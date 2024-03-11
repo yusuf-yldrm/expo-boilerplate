@@ -16,6 +16,13 @@ export function StackNavigator() {
         <Stack.Screen name="Splash" component={Screens.Splash} />
         <Stack.Screen name="Discover" component={TabNavigator} />
         <Stack.Screen name="Onboarding" component={Screens.Onboarding} />
+        <Stack.Screen
+          name="Paywall"
+          component={Screens.Paywall}
+          options={{
+            presentation: "formSheet",
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

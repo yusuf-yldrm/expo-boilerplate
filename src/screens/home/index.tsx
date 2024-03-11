@@ -1,32 +1,35 @@
-import * as React from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import React, { useEffect } from "react";
+import { StyleSheet, Text, View } from "react-native";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { setRemoteConfig } from "../../store/store/remote-config";
 
-interface DiscoverProps {}
+type Props = NativeStackScreenProps<TabStackParamList, "Home", "NativeStack">;
 
-const Discover = (props: DiscoverProps) => {
-  const appData = useAppSelector(
-    (state) => state.remoteConfig.remoteConfig.isAppStateOpen
+const Home: React.FC<Props> = ({ navigation }) => {
+  const paywallShowTime = useAppSelector(
+    (state) => state.settings.paywall_show_time
   );
 
   const dispatch = useAppDispatch();
 
-  const onPressChangeAppState = () => {
-    dispatch(setRemoteConfig({ isAppStateOpen: !appData }));
+  useEffect(() => {
+    initializeHome();
+  }, []);
+
+  const initializeHome = () => {
+    if (paywallShowTime == 0) {
+      navigation.navigate("Paywall");
+    }
   };
 
   return (
     <View style={styles.container}>
-      <Text>
-        Discover {appData ? "App State is Open" : "App State is Closed"}
-      </Text>
-      <Button onPress={onPressChangeAppState} title="Change App State" />
+      <Text>Paywall Show Time {paywallShowTime}</Text>
     </View>
   );
 };
 
-export default Discover;
+export default Home;
 
 const styles = StyleSheet.create({
   container: {

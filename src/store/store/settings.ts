@@ -5,6 +5,7 @@ const settingsSlice = createSlice({
   initialState: {
     is_first_open: true,
     is_premium: false,
+    paywall_show_time: 0,
   },
   reducers: {
     setIsFirstOpen(state, action: PayloadAction<boolean>) {
@@ -13,9 +14,13 @@ const settingsSlice = createSlice({
     setIsPremium(state, action: PayloadAction<boolean>) {
       state.is_premium = action.payload;
     },
+    increasePaywallShowTime(state) {
+      state.paywall_show_time += 1;
+    },
   },
 });
 
-export const { setIsFirstOpen } = settingsSlice.actions;
+export const { setIsFirstOpen, setIsPremium, increasePaywallShowTime } =
+  settingsSlice.actions;
 
 export default settingsSlice.reducer;

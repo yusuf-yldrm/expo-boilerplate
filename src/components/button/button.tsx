@@ -5,12 +5,17 @@ import AppTheme from "../../utils/theme";
 interface ButtonProps {
   title: string;
   onPress: () => void;
+  textStyle?: object;
+  containerStyle?: object;
 }
 
 const BasicButton = (props: ButtonProps) => {
+  const containerStyles = [styles.container, props.containerStyle];
+
+  const textStyles = [styles.text, props.textStyle];
   return (
-    <TouchableOpacity onPress={props.onPress} style={styles.container}>
-      <Text style={styles.text}> {props.title}</Text>
+    <TouchableOpacity onPress={props.onPress} style={containerStyles}>
+      <Text style={textStyles}> {props.title}</Text>
     </TouchableOpacity>
   );
 };
