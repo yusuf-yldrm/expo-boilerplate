@@ -1,8 +1,9 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React from "react";
+import React, { useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import BasicButton from "../../components/button/button";
 import Gradient from "../../components/gradient";
+import { paywallButtons } from "../../constants/paywall";
 import AppTheme, { ScreenHeight, ScreenWidth } from "../../utils/theme";
 import { PaywallAbsolute } from "./paywall.bg";
 import PaywallButton from "./paywall.button";
@@ -13,24 +14,25 @@ type Props = NativeStackScreenProps<
   "NativeStack"
 >;
 
-const paywallButtons = [
-  {
-    title: "Per Week",
-    packageId: "com.abc.xyz",
-  },
-  {
-    title: "Per Month",
-    packageId: "com.abc.xyz",
-  },
-  {
-    title: "Lifetime",
-    packageId: "com.abc.xyz",
-  },
-];
-
 const Paywall: React.FC<Props> = (props) => {
+  const [selected, setSelected] = useState(null);
+
   const onClose = () => {
     props.navigation.goBack();
+  };
+
+  const onPaywallButtonPress = (packageId: string, index: number) => {
+    // TODO: implement payment process
+    // start payment process
+    setSelected(index);
+  };
+
+  const onContinuePress = () => {
+    if (selected === null) {
+      return;
+    }
+
+    onClose();
   };
 
   return (
@@ -40,10 +42,10 @@ const Paywall: React.FC<Props> = (props) => {
         onClose={onClose}
       />
       <Gradient
-        height="100%"
+        height={ScreenHeight * 0.2}
         fromColor="#00000000"
         toColor="#00000000"
-        opacityColor1={0}
+        opacityColor1={0.3}
         opacityColor2={1}
         style={styles.gradientArea}
       >
@@ -59,8 +61,14 @@ const Paywall: React.FC<Props> = (props) => {
             data={paywallButtons}
             keyExtractor={(item, index) => index.toString()}
             ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
-            renderItem={({ item }) => (
-              <PaywallButton title={item.title} onPress={() => {}} />
+            renderItem={({ item, index }) => (
+              <PaywallButton
+                title={item.title}
+                onPress={() => {
+                  onPaywallButtonPress(item.packageId, index);
+                }}
+                isSelected={selected === index}
+              />
             )}
           />
           <BasicButton
@@ -87,10 +95,10 @@ const styles = StyleSheet.create({
     width: ScreenWidth * 0.9,
     marginBottom: ScreenHeight * 0.1,
     zIndex: 2,
-    gap: 20,
+    gap: ScreenHeight * 0.05,
   },
   textContainer: {
-    padding: 20,
+    paddingHorizontal: 20,
     gap: 10,
   },
   titleText: {

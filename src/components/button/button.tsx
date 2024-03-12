@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableHighlight } from "react-native";
 import AppTheme from "../../utils/theme";
 
 interface ButtonProps {
@@ -14,9 +14,9 @@ const BasicButton = (props: ButtonProps) => {
 
   const textStyles = [styles.text, props.textStyle];
   return (
-    <TouchableOpacity onPress={props.onPress} style={containerStyles}>
+    <TouchableHighlight onPress={props.onPress} style={containerStyles}>
       <Text style={textStyles}> {props.title}</Text>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 
