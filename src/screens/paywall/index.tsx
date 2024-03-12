@@ -76,6 +76,12 @@ const Paywall: React.FC<Props> = (props) => {
             onPress={onClose}
             textStyle={styles.purchaseButtonText}
           />
+          <View style={styles.thanksTextBox}>
+            <Text style={styles.thanksText}>Cancel Any Time</Text>
+            {/* <TouchableOpacity onPress={onClose}>
+              <Text style={styles.restoreText}>Restore Purchases</Text>
+            </TouchableOpacity> */}
+          </View>
         </View>
       </Gradient>
     </View>
@@ -95,7 +101,7 @@ const styles = StyleSheet.create({
     width: ScreenWidth * 0.9,
     marginBottom: ScreenHeight * 0.1,
     zIndex: 2,
-    gap: ScreenHeight * 0.05,
+    gap: ScreenHeight * 0.03,
   },
   textContainer: {
     paddingHorizontal: 20,
@@ -124,5 +130,22 @@ const styles = StyleSheet.create({
   },
   flatList: {
     width: "100%",
+  },
+  thanksTextBox: {
+    borderBottomColor: AppTheme.colors.white,
+    borderBottomWidth: 1,
+  },
+  thanksText: {
+    color: AppTheme.colors.white,
+    fontSize: 14,
+    opacity: 0.6,
+  },
+  restoreText: {
+    color: AppTheme.colors.white,
+    fontSize: 12,
+    opacity: 0.6,
+    lineHeight: 20,
+
+    paddingBottom: 2,
   },
 });

@@ -34,6 +34,8 @@ const styles = StyleSheet.create({
     top: 50,
     right: 20,
     padding: 12,
+    zIndex: 100,
+    opacity: 0.6,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",

@@ -7,4 +7,5 @@ type RootStackParamList = {
 
 type TabStackParamList = {
   Home: undefined;
+  Settings: undefined;
 } & RootStackParamList;

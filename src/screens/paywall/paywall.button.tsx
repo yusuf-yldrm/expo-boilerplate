@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     paddingVertical: 20,
-    backgroundColor: AppTheme.colors.mainBG,
+    backgroundColor: AppTheme.colors.paywallButton,
     width: "100%",
     alignItems: "flex-start",
     justifyContent: "center",
