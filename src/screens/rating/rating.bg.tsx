@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+import { ScreenHeight } from "utils/theme";
 import CloseIcon from "../../../assets/icons/close";
 
 type RatingAbsoluteProps = {
@@ -31,8 +32,8 @@ const styles = StyleSheet.create({
   },
   closeButton: {
     position: "absolute",
-    top: 50,
-    right: 20,
+    top: ScreenHeight * 0.08,
+    right: ScreenHeight * 0.03,
     padding: 12,
     zIndex: 100,
     opacity: 0.6,
