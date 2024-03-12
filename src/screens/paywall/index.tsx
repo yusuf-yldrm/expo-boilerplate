@@ -1,10 +1,11 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
-import { ImageSourcePropType, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import BasicButton from "../../components/button/button";
 import Gradient from "../../components/gradient";
 import AppTheme, { ScreenHeight, ScreenWidth } from "../../utils/theme";
 import { PaywallAbsolute } from "./paywall.bg";
+import PaywallButton from "./paywall.button";
 
 type Props = NativeStackScreenProps<
   RootStackParamList,
@@ -12,10 +13,20 @@ type Props = NativeStackScreenProps<
   "NativeStack"
 >;
 
-type PaywallAbsoluteProps = {
-  onClose: () => void;
-  imageSource: ImageSourcePropType;
-};
+const paywallButtons = [
+  {
+    title: "Per Week",
+    packageId: "com.abc.xyz",
+  },
+  {
+    title: "Per Month",
+    packageId: "com.abc.xyz",
+  },
+  {
+    title: "Lifetime",
+    packageId: "com.abc.xyz",
+  },
+];
 
 const Paywall: React.FC<Props> = (props) => {
   const onClose = () => {
@@ -38,9 +49,20 @@ const Paywall: React.FC<Props> = (props) => {
       >
         <View style={styles.bottomContainer}>
           <View style={styles.textContainer}>
-            <Text style={styles.titleText}>Title</Text>
-            <Text style={styles.descText}>Desc</Text>
+            <Text style={styles.titleText}>Access all edits</Text>
+            <Text style={styles.descText}>
+              Upgrade to save high quality photo,and unlock all features ⭐
+            </Text>
           </View>
+          <FlatList
+            style={styles.flatList}
+            data={paywallButtons}
+            keyExtractor={(item, index) => index.toString()}
+            ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
+            renderItem={({ item }) => (
+              <PaywallButton title={item.title} onPress={() => {}} />
+            )}
+          />
           <BasicButton
             title="Continue"
             onPress={onClose}
@@ -63,7 +85,6 @@ const styles = StyleSheet.create({
   bottomContainer: {
     alignItems: "center",
     width: ScreenWidth * 0.9,
-    backgroundColor: "black",
     marginBottom: ScreenHeight * 0.1,
     zIndex: 2,
     gap: 20,
@@ -73,12 +94,15 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   titleText: {
-    fontSize: 20,
+    fontSize: 34,
+    textAlign: "center",
     fontWeight: "bold",
     color: AppTheme.colors.white,
   },
   descText: {
-    fontSize: 16,
+    fontSize: 17,
+    textAlign: "center",
+    opacity: 0.7,
     color: AppTheme.colors.white,
   },
   gradientArea: {
@@ -89,5 +113,8 @@ const styles = StyleSheet.create({
   },
   purchaseButtonText: {
     fontWeight: "600",
+  },
+  flatList: {
+    width: "100%",
   },
 });
