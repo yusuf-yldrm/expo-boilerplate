@@ -7,7 +7,7 @@ const AppTheme = {
     white: "#FFFFFF",
     black: "#000000",
     // mainBG: "#25282C",
-    mainBG: "#0A0B0C",
+    mainBG: "#272121",
     paywallButton: "#25282C",
   },
   fonts: {

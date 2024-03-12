@@ -2,7 +2,7 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect } from "react";
 import { Image, StyleSheet, View } from "react-native";
 import { useAppSelector } from "../../store/hooks";
-import AppTheme from "../../utils/theme";
+import AppTheme, { ScreenHeight } from "../../utils/theme";
 
 type Props = NativeStackScreenProps<
   RootStackParamList,
@@ -31,7 +31,12 @@ const Splash: React.FC<Props> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.logo} source={require("../../../assets/icon.png")} />
+      <Image
+        style={styles.logo}
+        source={require("../../../assets/splash.png")}
+        resizeMethod="scale"
+        resizeMode="contain"
+      />
     </View>
   );
 };
@@ -46,8 +51,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logo: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    // width: 100,
+    // height: 100,
+    // borderRadius: 50,
+    width: ScreenHeight,
+    height: ScreenHeight,
   },
 });

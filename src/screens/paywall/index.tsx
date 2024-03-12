@@ -1,6 +1,8 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
+import { useAppDispatch } from "store/hooks";
+import { increasePaywallShowTime } from "store/store/settings";
 import BasicButton from "../../components/button/button";
 import Gradient from "../../components/gradient";
 import { paywallButtons } from "../../constants/paywall";
@@ -16,9 +18,11 @@ type Props = NativeStackScreenProps<
 
 const Paywall: React.FC<Props> = (props) => {
   const [selected, setSelected] = useState(null);
+  const dispatch = useAppDispatch();
 
   const onClose = () => {
     props.navigation.goBack();
+    dispatch(increasePaywallShowTime());
   };
 
   const onPaywallButtonPress = (packageId: string, index: number) => {
