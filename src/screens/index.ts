@@ -1,6 +1,7 @@
 import Home from "./home";
 import Onboarding from "./onboarding";
 import Paywall from "./paywall";
+import Rating from "./rating";
 import Settings from "./settings";
 import Splash from "./splash";
 
@@ -10,6 +11,7 @@ const Screens = {
   Home,
   Paywall,
   Settings,
+  Rating,
 };
 
 export default Screens;

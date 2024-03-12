@@ -5,15 +5,14 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { ScreenHeight } from "utils/theme";
 import CloseIcon from "../../../assets/icons/close";
 
-type PaywallAbsoluteProps = {
+type RatingAbsoluteProps = {
   onClose: () => void;
   imageSource: ImageSourcePropType;
 };
 
-export const PaywallAbsolute = (props: PaywallAbsoluteProps) => {
+export const RatingAbsolute = (props: RatingAbsoluteProps) => {
   return (
     <>
       <Image source={props.imageSource} style={styles.paywallBG} />
@@ -32,8 +31,8 @@ const styles = StyleSheet.create({
   },
   closeButton: {
     position: "absolute",
-    top: ScreenHeight * 0.08,
-    right: ScreenHeight * 0.03,
+    top: 50,
+    right: 20,
     padding: 12,
     zIndex: 100,
     opacity: 0.6,

@@ -10,7 +10,7 @@ import PaywallButton from "./paywall.button";
 
 type Props = NativeStackScreenProps<
   RootStackParamList,
-  "Splash",
+  "Paywall",
   "NativeStack"
 >;
 

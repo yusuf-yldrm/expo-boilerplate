@@ -17,10 +17,17 @@ export function StackNavigator() {
         <Stack.Screen name="Discover" component={TabNavigator} />
         <Stack.Screen name="Onboarding" component={Screens.Onboarding} />
         <Stack.Screen
+          name="Rating"
+          component={Screens.Rating}
+          options={{
+            presentation: "formSheet",
+          }}
+        />
+        <Stack.Screen
           name="Paywall"
           component={Screens.Paywall}
           options={{
-            presentation: "formSheet",
+            presentation: "fullScreenModal",
           }}
         />
       </Stack.Navigator>
