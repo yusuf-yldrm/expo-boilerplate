@@ -41,7 +41,7 @@ export default Splash;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AppTheme.colors.primary,
+    backgroundColor: AppTheme.colors.mainBG,
     alignItems: "center",
     justifyContent: "center",
   },

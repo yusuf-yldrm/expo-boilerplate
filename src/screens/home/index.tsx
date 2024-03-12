@@ -2,6 +2,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import AppTheme from "../../utils/theme";
 
 type Props = NativeStackScreenProps<TabStackParamList, "Home", "NativeStack">;
 
@@ -36,5 +37,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: AppTheme.colors.mainBG,
   },
 });

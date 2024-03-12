@@ -6,7 +6,7 @@ const AppTheme = {
     secondary: "#FF4500",
     white: "#FFFFFF",
     black: "#000000",
-    buttonBG: "#25282C",
+    mainBG: "#25282C",
   },
   fonts: {
     regular: "Roboto-Regular",

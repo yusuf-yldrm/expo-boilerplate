@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     paddingVertical: 20,
-    backgroundColor: AppTheme.colors.buttonBG,
+    backgroundColor: AppTheme.colors.mainBG,
     width: "100%",
     alignItems: "flex-start",
     justifyContent: "center",
