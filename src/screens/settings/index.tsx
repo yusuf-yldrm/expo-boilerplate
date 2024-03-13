@@ -1,12 +1,17 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { settingsData } from "constants/settings";
 import * as React from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import AppTheme, { ScreenHeight } from "utils/theme";
 import SettingsItem from "./settings.item";
 
-interface SettingsProps {}
+type Props = NativeStackScreenProps<
+  TabStackParamList,
+  "Settings",
+  "NativeStack"
+>;
 
-const Settings = (props: SettingsProps) => {
+const Settings = ({ navigation }: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.listBox}>
@@ -21,9 +26,10 @@ const Settings = (props: SettingsProps) => {
           renderItem={({ item, index }) => {
             return (
               <SettingsItem
+                index={index}
                 title={item.title}
                 onPress={() => {
-                  console.log("SettingsItem pressed");
+                  navigation.navigate("Rating");
                 }}
                 iconBoxColor={item.iconBoxColor}
                 icon={

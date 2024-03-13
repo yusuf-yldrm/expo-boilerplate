@@ -4,6 +4,7 @@ type RootStackParamList = {
   Onboarding: undefined;
   Paywall: undefined;
   Rating: undefined;
+  Settings: undefined;
 };
 
 type TabStackParamList = {

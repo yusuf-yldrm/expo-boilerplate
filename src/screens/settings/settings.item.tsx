@@ -1,4 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createNavigationContainerRef } from "@react-navigation/native";
 import * as React from "react";
 import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import ArrowIcon from "../../../assets/icons/arrow";
@@ -9,7 +10,10 @@ interface SettingsItemProps {
   onPress: () => void;
   isLast?: boolean;
   iconBoxColor?: string;
+  index: number;
 }
+
+export const navigationRef = createNavigationContainerRef();
 
 const SettingsItem = ({
   title,
@@ -17,11 +21,16 @@ const SettingsItem = ({
   onPress,
   isLast,
   iconBoxColor,
+  index,
 }: SettingsItemProps) => {
   return (
     <TouchableHighlight
       onPress={() => {
-        AsyncStorage.clear();
+        if (index === 0) {
+          AsyncStorage.clear();
+        } else {
+          onPress();
+        }
       }}
     >
       <View

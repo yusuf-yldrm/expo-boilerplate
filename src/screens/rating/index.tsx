@@ -39,11 +39,17 @@ const Rating = ({ navigation }: Props) => {
           <View style={{ height: ScreenHeight * 0.01 }} />
           <BasicButton
             title="Yes, I love it 💜"
-            onPress={() => {}}
+            onPress={() => {
+              navigation.goBack();
+            }}
             textStyle={styles.loveButtonText}
           />
 
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}
+          >
             <Text style={styles.notNowText}>Not now</Text>
           </TouchableOpacity>
         </View>
