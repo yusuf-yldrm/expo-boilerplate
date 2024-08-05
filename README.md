@@ -1,1 +1,1 @@
-The react native expo boilerplate template by Yusuf Yildirim
+The TypeScript React Native Expo boilerplate template by Yusuf Yildirim
